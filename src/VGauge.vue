@@ -1,15 +1,5 @@
 <template>
-  <div>
-    <div class="gauge-title">
-      <span ref="gauge-value" v-if="top" :class="gaugeValueClass"></span>
-      <span v-if="top" :class="gaugeValueClass">{{unit}}</span>
-    </div>
-    <canvas ref="gauge" :height="height"></canvas>
-    <div class="gauge-title">
-      <span ref="gauge-value" v-if="!top" :class="gaugeValueClass"></span>
-      <span v-if="!top" :class="gaugeValueClass">{{unit}}</span>
-    </div>
-  </div>
+  <canvas ref="gauge" :height="height"></canvas>
 </template>
 
 <script>
@@ -23,7 +13,7 @@ export default {
     },
     height: {
       type: String,
-      default: "200px"
+      default: "150px"
     },
     decimalPlace: {
       type: Number,
@@ -106,16 +96,8 @@ export default {
       this.gauge.setMinValue(this.minValue);
       this.gauge.animationSpeed = this.animationSpeed;
       this.gauge.setOptions(this.options);
-      this.gauge.setTextField(this.$refs["gauge-value"], this.decimalPlace);
       this.gauge.set(this.value);
     }
   }
 };
 </script>
-
-<style scoped>
-.gauge-title span {
-  display: inline;
-  text-align: center;
-}
-</style>
